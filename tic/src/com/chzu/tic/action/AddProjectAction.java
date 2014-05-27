@@ -7,7 +7,7 @@ import com.chzu.tic.model.Project;
  */
 public class AddProjectAction extends TeacherBaseAction {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;//
 	private Project project;//封装add.jsp页面提交的数据
 	
 	public Project getProject() {
