@@ -1,0 +1,42 @@
+1.tic(technology innovation competition)采用Struts2.3+Spring4.0+Hibernate3.6集成框架
+  Mysql数据库
+2.WebContent下index.jsp是前端首页页面，
+  login.jsp为后台管理员和老师登录页面
+3.WebContent\WEB-INF目录下，
+   back文件夹存放后台表现层jsp页面，
+   front文件夹存放前台表现层jsp页面
+   
+4.数据库设计
+   1)在线学习online_table(online_id,.....)还不知道如何填写
+   2)新闻管理news_table(new_id,new_title,news_content,news_date)
+   3)文件下载file_table(file_id,file_name,file_path)
+   4)用户表user_table(user_id,user_username,user_password,user_type,user_team,user_email,project_id，Project_state)
+          user_type用户类型，0后台管理员，1老师，2项目持有者学生
+          user_team项目持有者的队友
+   5)项目表project_table(project_id,project_name,project_level,project_period,project_remark)
+          project_level项目级别(院级，省级，国家级)
+          project_table和user_table一对多双向关联(比如一个飞思卡尔比赛有多个同学参加),
+                          如果刪除project，对user表相应字段设置为空
+    
+ 5.后台功能模块
+            管理员角色
+         1)新闻系统
+                                       发布新闻
+                                       管理新闻
+         2)用户系统
+                                       管理用户
+                                        添加老师
+         老师角色
+         1)项目管理
+                                       所有比赛项目
+                                      比赛项目搜索
+                                       添加比赛项目
+         2)报名管理
+                                        通过名单
+                                        未通过名单
+         3)学习管理
+                                        回复问题
+         4)相关下载
+                                       文件上传
+                                       文件下载
+  6.最好谷歌浏览器显示

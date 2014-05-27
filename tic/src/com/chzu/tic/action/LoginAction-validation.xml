@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+ "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- 校验LoginAction的username属性 -->
+	<field name="user.username">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message key="name.requried"/>
+		</field-validator>
+	</field>
+	<!-- 校验LoginAction的password属性 -->
+	<field name="user.password">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message key="password.requried"/>
+		</field-validator>
+
+		<!-- <field-validator type="regex"> <param name="expression"><![CDATA[(^\w{6,16}$)]]></param> 
+			<message>密码长度必须在6到16之间</message> </field-validator> -->
+
+	</field>
+	<!-- 校验LoginAction的verifycode属性 -->
+	<field name="verifycode">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message key="verifycode.requried"/>
+		</field-validator>
+	</field>
+</validators>

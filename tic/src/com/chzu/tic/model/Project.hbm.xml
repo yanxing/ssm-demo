@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	<!-- 关联查询，有集合属性，关闭延迟加载 -->
+<hibernate-mapping package="com.chzu.tic.model" default-lazy="false">
+	<class name="Project" table="project_table">
+		<id name="id" type="integer">
+			<column name="project_id" />
+			<!--指定使用identity主键生成策略 ,自增长 -->
+			<generator class="identity" />
+		</id>
+		<property name="name" type="string">
+			<column name="project_name" />
+		</property>
+		<property name="level" type="string">
+			<column name="project_level" />
+		</property>
+		<property name="period" type="string">
+			<column name="project_period" />
+		</property>
+		<property name="remark" type="string">
+			<column name="project_remark" />
+		</property>
+		<!-- 由N的一端控制关联关系 -->
+		<set name="users" inverse="true">
+			<key column="project_id" />
+			<one-to-many class="User" />
+		</set>
+	</class>
+</hibernate-mapping>

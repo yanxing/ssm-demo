@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 配置struts2处于开发模式，禁止缓存静态内容 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.custom.i18n.resources" value="LoginUpload" />
+	<constant name="struts.il8n.encoding" value="UTF-8" />
+	<!-- 定义全局上传的文件大小必须小于等于40M -->
+	<constant name="struts.multipart.maxSize" value="41943040" />
+	<!-- =========================处理登录、退出操作================================ -->
+	<package name="chzu" extends="struts-default" namespace="/login">
+	    <interceptors>
+	        <!-- 配置管理员和老师相同页面的权限拦截器 -->
+	        <interceptor name="AT" class="com.chzu.tic.action.BackShowInterceptor"/>
+	        <!-- 配置管理员和老师相同页面的默认拦截器栈 -->
+	        <interceptor-stack name="ATStack">
+	            <interceptor-ref name="defaultStack"/>
+	            <interceptor-ref name="AT"/>
+	        </interceptor-stack>
+	    </interceptors>
+	    <!-- 定义全局Result映射 -->
+		<global-results>
+			<!-- 定义login逻辑视图对应的视图资源 -->
+			<result name="login">/login.jsp</result>
+		</global-results>
+		<action name="loginAction" class="com.chzu.tic.action.LoginAction">
+			<result name="input">/login.jsp</result>
+			<result name="error">/login.jsp</result>
+			<result name="admin_result">/WEB-INF/back/admin/index.jsp</result>
+			<result name="teacher_result">/WEB-INF/back/teacher/index.jsp</result>
+			<result name="student_result">/index.jsp</result>
+		</action>
+		<action name="exit" class="com.chzu.tic.action.LogoutAction">
+			<!-- 重定向到登录界面，地址栏地址 -->
+			<result name="success" type="redirect">/login.jsp</result>
+		</action>
+		<action name="verifycodeAction" class="com.chzu.tic.action.BackShowAction" method="verifycode">
+		    <result name="verifycode">/WEB-INF/back/verifycode.jsp</result>
+		</action>
+		<action name="*Action" class="com.chzu.tic.action.BackShowAction"
+			method="{1}">
+			<interceptor-ref name="ATStack"/>
+			<result name="input">/login.jsp</result>
+			<result name="error">/login.jsp</result>
+			<result name="top">/WEB-INF/back/top.jsp</result>
+			<result name="buttom">/WEB-INF/back/buttom.jsp</result>
+		</action>
+	</package>
+
+	<!-- =========================下面是管理员的Action=================================== -->
+	<package name="ad" extends="struts-default" namespace="/admin">
+	     <interceptors>
+	        <!-- 配置管理员的权限拦截器 -->
+	        <interceptor name="admin" class="com.chzu.tic.action.AdminInterceptor"/>
+	        <!-- 配置管理员的默认拦截器栈 -->
+	        <interceptor-stack name="adminStack">
+	            <interceptor-ref name="defaultStack"/>
+	            <interceptor-ref name="admin"/>
+	        </interceptor-stack>
+	    </interceptors>
+	    <!-- 定义全局Result映射 -->
+		<global-results>
+			<!-- 定义login逻辑视图对应的视图资源 -->
+			<result name="login">/login.jsp</result>
+		</global-results>
+		<action name="*Action" class="com.chzu.tic.action.BackShowAction"
+			method="{1}">
+			<interceptor-ref name="adminStack"/>
+			<result name="{1}">/WEB-INF/back/admin/{1}.jsp</result>
+			<result name="input">/WEB-INF/back/error.jsp</result>
+			<result name="error">/WEB-INF/back/error.jsp</result>
+			<result name="success">/WEB-INF/back/success.jsp</result>
+		</action>
+		<action name="*_*" class="com.chzu.tic.action.AdminAction"
+			method="{2}">
+			<interceptor-ref name="adminStack"/>
+			<result name="release">/WEB-INF/back/admin/news_release.jsp</result>
+			<result name="add">/WEB-INF/back/admin/main.jsp</result>
+			<result name="list_user">/WEB-INF/back/admin/list_user.jsp</result>
+			<result name="addUser">/WEB-INF/back/admin/addUser.jsp</result>
+			<result name="admin_addoneUser">/WEB-INF/back/admin/addUser.jsp</result>
+			<result name="newsLists">/WEB-INF/back/admin/news_list.jsp</result>
+			<result name="newsUpdate">/WEB-INF/back/admin/news_update.jsp</result>
+			<result name="newsdetails">/WEB-INF/back/admin/newsdetails.jsp</result>
+			<result name="input">/WEB-INF/back/admin/addUser.jsp</result>
+			<result name="error">/WEB-INF/back/error.jsp</result>
+			<result name="success">/WEB-INF/back/success.jsp</result>
+		</action>
+	</package>
+
+	<!-- ===========================下面是老师的Action====================================== -->
+	<package name="te" extends="struts-default" namespace="/teacher">
+	     <interceptors>
+	        <!-- 配置老师的权限拦截器  -->
+	        <interceptor name="teacher" class="com.chzu.tic.action.TeacherInterceptor"/>   
+	        <!-- 配置老师的默认拦截器栈 -->
+	        <interceptor-stack name="teacherStack">
+	            <interceptor-ref name="defaultStack"/>
+	            <interceptor-ref name="teacher"/>
+	        </interceptor-stack>
+	    </interceptors>
+	    <!-- 定义全局Result映射 -->
+		<global-results>
+			<!-- 定义login逻辑视图对应的视图资源 -->
+			<result name="login">/login.jsp</result>
+		</global-results>
+		<!-- 此Action类只进行jsp页面跳转 -->
+		<action name="*Action" class="com.chzu.tic.action.BackShowAction"
+			method="{1}">
+			<interceptor-ref name="teacherStack"/>
+			<result name="{1}">/WEB-INF/back/teacher/{1}.jsp</result>
+			<result name="input">/WEB-INF/back/error.jsp</result>
+			<result name="error">/WEB-INF/back/error.jsp</result>
+			<result name="success">/WEB-INF/back/success.jsp</result>
+		</action>
+		
+		<!-- 显示所有上传文件 Action-->
+		<action name="fileListAction" class="com.chzu.tic.action.FileListDownload">
+		     <interceptor-ref name="teacherStack"/>
+		     <result name="success">/WEB-INF/back/teacher/file_list.jsp</result>
+		     <result name="input">/WEB-INF/back/teacher/file_list.jsp</result>
+		     <result name="error">/WEB-INF/back/error.jsp</result>
+		</action>
+		
+		<!-- 上传文件 Action-->
+		<action name="uploadFileAction" class="com.chzu.tic.action.UploadAction">
+			<!-- 配置struts自带的文件上传fileUpload拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传文件最大为20MB，单位字节 -->
+				<param name="maximumSize">20971520</param>
+			</interceptor-ref>
+			<!-- 需要配置系统默认的的拦截器，在teacherStack拦截器栈中，不然收到文件为null -->
+			<interceptor-ref name="teacherStack"/>
+			<!-- 文件上传存储路径 -->
+			<param name="savePath">upload</param>
+			<result name="success">/WEB-INF/back/success.jsp</result>
+			<result name="input">/WEB-INF/back/teacher/upload.jsp</result>
+		</action>
+		
+		<!-- 下载文件 -->
+        <action name="downloadAction" class="com.chzu.tic.action.DownloadAction">
+            <interceptor-ref name="teacherStack"/>
+            <result name="success" type="stream">
+                <param name="inputName">targetFile</param>
+                <!-- 接收DownloadAction为其注入的值 -->
+                <param name="contentDisposition">filename="${fileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+        
+        <!-- 删除文件 -->
+        <action name="deleteFileAction" class="com.chzu.tic.action.DeleteFileAction">
+            <interceptor-ref name="teacherStack"/>
+            <!-- 重定向显示所有上传文件 Action -->
+            <result type="redirectAction">fileListAction</result>
+        </action>
+        
+        <!-- 搜索比赛项目 -->
+        <action name="searchProjectAction" class="com.chzu.tic.action.SearchProjectAction">
+            <interceptor-ref name="teacherStack"/>
+            <result name="success">/WEB-INF/back/teacher/search_result.jsp</result>
+            <result name="input">/WEB-INF/back/teacher/search.jsp</result>
+        </action>
+        
+        <!-- 删除比赛项目 -->
+        <action name="deleteProjectAction" class="com.chzu.tic.action.DeleteProjectAction">
+            <interceptor-ref name="teacherStack"/>
+            <result name="success">/WEB-INF/back/success.jsp</result>
+            <result name="error">/WEB-INF/back/error.jsp</result>
+        </action>
+        
+        <!-- 修改比赛项目 -->
+        <action name="updateProjectAction" class="com.chzu.tic.action.UpdateProjectAction">
+            <interceptor-ref name="teacherStack"/>
+            <result name="success">/WEB-INF/back/success.jsp</result>
+            <result name="input">/WEB-INF/back/teacher/search_result.jsp</result>
+        </action>
+        
+        <!-- 显示所有的比赛项目 -->
+        <action name="projectListAction" class="com.chzu.tic.action.ProjectListAction">
+             <interceptor-ref name="teacherStack"/>
+             <result name="success">/WEB-INF/back/teacher/project_list.jsp</result>
+		     <result name="input">/WEB-INF/back/teacher/project_list.jsp</result>
+		     <result name="error">/WEB-INF/back/error.jsp</result>
+        </action>
+        
+        <!-- 显示所有的比赛项目 -->
+        <action name="addProjectAction" class="com.chzu.tic.action.AddProjectAction">
+             <interceptor-ref name="teacherStack"/>
+             <result name="success">/WEB-INF/back/success.jsp</result>
+		     <result name="input">/WEB-INF/back/teacher/add.jsp</result>
+		     <result name="error">/WEB-INF/back/error.jsp</result>
+        </action>
+        
+        <!-- 显示比赛报名名单 -->
+        <action name="*_*" class="com.chzu.tic.action.CompetitionListAction" method="{2}">
+            <interceptor-ref name="teacherStack"/>
+            <result name="success">/WEB-INF/back/teacher/{1}_{2}.jsp</result>
+            <result name="error">/WEB-INF/back/error.jsp</result>
+        </action>
+        
+        <!-- 审核学生比赛报名资格 -->
+        <action name="competitionCheckAction" class="com.chzu.tic.action.CompetitionCheckAction">
+            <interceptor-ref name="teacherStack"/>
+            <result name="success">/WEB-INF/back/success.jsp</result>
+            <result name="error">/WEB-INF/back/error.jsp</result>
+        </action>
+	</package>
+
+	<package name="default" extends="struts-default">
+		<!-- 默认空间action处理 -->
+		<action name="*">
+			<result name="{1}">/{1}.jsp</result>
+		</action>
+	</package>
+</struts>
