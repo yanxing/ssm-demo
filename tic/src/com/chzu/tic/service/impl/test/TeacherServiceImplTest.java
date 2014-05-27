@@ -1,7 +1,5 @@
 package com.chzu.tic.service.impl.test;
 
-
-
 import java.util.List;
 
 import org.junit.BeforeClass;
