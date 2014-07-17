@@ -21,6 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
 </style>
 <script type="text/javascript">
+       if (window!=top) // 判断当前的window对象是否是top对象,如果不是，将top对象的网址自动导向被嵌入网页的网址
+            top.location.href =window.location.href; // 防止浏览器后退，登录界面被放在iframe里
 	function loadimage() {
 		document.getElementById("randImage").src = "login/verifycodeAction?"
 				+ Math.random();
