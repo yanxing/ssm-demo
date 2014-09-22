@@ -1,0 +1,55 @@
+/*.login_top_bg {
+	background-image: url(../images/login-top-bg.gif);
+	background-repeat: repeat-x;
+}
+
+.login_bg {
+	background-image: url(../images/login_bg.jpg);
+	background-repeat: repeat-x;
+}*/
+body{
+	background-image: url(../images/login_bg.gif);
+	background-repeat: repeat-x;
+}
+
+.login_bg2 {
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.login_txt_bt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	line-height: 25px;
+	color: #0F6CA0;
+	font-weight: bold;
+}
+
+.login_txt {
+	margin-left:3px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 25px;
+	color: #333333;
+}
+
+.login-buttom-bg {
+	background-image: url(../images/login-buttom-bg.gif);
+	background-repeat: repeat-x;
+}
+
+.login-buttom-txt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ABCAD3;
+	text-decoration: none;
+	line-height: 20px;
+}
+.font_style1{
+	font-size: 12px;
+	color: #000;
+	text-decoration: none;
+}
+.font_style1:HOVER {
+	color: #316D9E;
+}

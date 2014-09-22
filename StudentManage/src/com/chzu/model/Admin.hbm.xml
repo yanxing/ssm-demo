@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chzu.model">
+	<class name="Admin" table="table_admin">
+		<id name="id" type="integer" column="id">
+			<!--指定使用identity主键生成策略 ,自增长 -->
+			<generator class="identity" />
+		</id>
+		<property name="username" column="name" type="string"
+			 />
+		<property name="password" column="password" type="string"
+			  />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+*{margin:0;}
+button,.button{}
+select{border: 1px solid #C1D1DB;}
+ol,ul{list-style-type: none;}
+dt{font-size:14px;font-weight:bold;}
+
+body{behavior:url("csshover3.htc");}
+
+/* IE6 hack*/
+img{
+}
