@@ -10,7 +10,7 @@
                                                                       手机号phone,修改成功返回success，json格式
   3)android修改个人密码地址：http://localhost:8080/StudentManage/android/pwdAction
                                                                     提交 学号：student.number   最终密码student.password（字符串格式）
-  4)android获取同班的学生地址：http://localhost:8080/StudentManage/android/stuListAtion
+  4)android获取同班的学生人数：http://localhost:8080/StudentManage/android/stuListAtion
                                                                      提交学号 student.number  字符串      
                                                                      
 备注：android客户端提交的字段需要和上面的保持一致，后端才能获取到。                                                                                                                           

@@ -17,6 +17,11 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/jquery-ui.css">
 <style type="text/css">
+#adminForm input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px white inset; /*去掉谷歌浏览器自动填充时添加的黄色背景色*/
+	border: 1px solid #D2D9dC !important;
+}
+
 #Form label.error {
 	color: red;
 	margin: 4px;

@@ -6,7 +6,7 @@ import com.chzu.model.Student;
 /**
  * androidµÇÂ¼ÑéÖ¤
  * 
- * @author Administrator
+ * @authorÀîË«Ïé
  *
  */
 public class LoginAction extends AdminBaseAction {
@@ -34,9 +34,11 @@ public class LoginAction extends AdminBaseAction {
 	}
 
 	public String execute() throws Exception {
+		System.out.println("name" + student.getUsername());
+		System.out.println("password" + student.getPassword());
 		student = adminService.validLogin(student);
 		if (student != null) {
-			setLoginResult("success");
+			setLoginResult("successLogin");
 		}
 		return SUCCESS;
 	}

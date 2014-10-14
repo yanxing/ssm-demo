@@ -68,7 +68,7 @@
 		<!-- 修改学生 -->
 		<action name="updateStudentAction" class="com.chzu.action.UpdateStudentAction">
 			<interceptor-ref name="adminStack" />
-			<result name="success">/WEB-INF/admin/success.jsp</result>
+			<result type="redirectAction">listAction</result>
 			<result name="input">/WEB-INF/admin/update.jsp</result>
 		</action>
 
@@ -91,7 +91,7 @@
 	</package>
 	
 	<!-- ===========================下面是学生从android登陆的Action====================================== -->
-	<package name="android" extends="json-default" namespace="android">
+	<package name="android" extends="json-default" namespace="/android">
 	    <!-- 登陆 ,若成功，返回个人信息-->
 	    <action name="loginAction" class="com.chzu.action.android.LoginAction">
 	     <result name="success" type="json">  
@@ -100,7 +100,7 @@
                 student\.phone,student\.classGrade\.name,student\.classGrade\.pro\.name,
                 student\.classGrade\.pro\.dep\.name
                 </param>  
-        </result>  
+        </result>
 	    </action>
 	    
 	     <!-- 修改个人信息 -->

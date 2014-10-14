@@ -25,16 +25,15 @@ public class AdminServiceImpl extends BaseService implements AdminService {
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * 成功返回student对象，否则返回null
 	 */
 	@Override
 	public Student validLogin(Student student) {
-		if(studentDao.findByNameAndPass(student).size()>0){
+		if (studentDao.findByNameAndPass(student).size() > 0) {
 			return studentDao.findByNameAndPass(student).get(0);
 		}
-		
 		return null;
 	}
 
@@ -47,7 +46,6 @@ public class AdminServiceImpl extends BaseService implements AdminService {
 		final int length = pageSize; // 每页记录数
 		final int currentPage = PageBean.countCurrentPage(page);
 		List<Student> list = studentDao.findByPage(hql, offset, length); // "一页"的记录
-
 		// 把分页信息保存到Bean中
 		PageBean pageBean = new PageBean();
 		pageBean.setPageSize(pageSize);
@@ -61,8 +59,8 @@ public class AdminServiceImpl extends BaseService implements AdminService {
 
 	@Override
 	public Boolean exit(String number) {
-	    Student listFile =studentDao.findByName(number);
-		if (listFile!=null) {// 相同用户已存在
+		Student listFile = studentDao.findByName(number);
+		if (listFile != null) {// 相同用户已存在
 			return true;
 		}
 		return false;
@@ -76,19 +74,16 @@ public class AdminServiceImpl extends BaseService implements AdminService {
 	@Override
 	public void deleteStudent(Integer id) {
 		studentDao.delete(id);
-
 	}
 
 	@Override
 	public void updateStudent(Student user) {
 		studentDao.update(user);
-
 	}
 
 	@Override
 	public void addStudent(Student user) {
 		studentDao.save(user);
-
 	}
 
 	@Override
@@ -97,7 +92,6 @@ public class AdminServiceImpl extends BaseService implements AdminService {
 	}
 
 	/**
-	 * 
 	 * @param mobile
 	 *            手机号
 	 * @return 手机号格式正确返回true，错误返回false
@@ -119,17 +113,13 @@ public class AdminServiceImpl extends BaseService implements AdminService {
 		return matcher.matches();
 	}
 
-
 	@Override
 	public void updateStudent(String number, String username, String sex,
 			Date birthday, String phone, Integer id) {
-		studentDao.update("update Student t set t.number='"
-				+ number + "',t.username = '"
-				+ username + "',t.sex='" + sex
-				+ "',t.birthday='" + birthday + "',t.phone='"
-				+ phone + "'" + " where id ='" + id
-				+ "'");
-		
+		studentDao.update("update Student t set t.number='" + number
+				+ "',t.username = '" + username + "',t.sex='" + sex
+				+ "',t.birthday='" + birthday + "',t.phone='" + phone + "'"
+				+ " where id ='" + id + "'");
 	}
 
 	@Override
@@ -138,8 +128,8 @@ public class AdminServiceImpl extends BaseService implements AdminService {
 	}
 
 	@Override
-	public ClassGrade findById(Integer id ) {
-	   return classGradeDao.get(id);
+	public ClassGrade findById(Integer id) {
+		return classGradeDao.get(id);
 	}
 
 	@Override
@@ -149,16 +139,14 @@ public class AdminServiceImpl extends BaseService implements AdminService {
 
 	@Override
 	public List<Student> getStudentList(Integer clasid) {
-		List<Student> students=new ArrayList<Student>();
-		//获取指定的班级
-		ClassGrade classGrade=classGradeDao.get(clasid);
-		//根据班级的students属性得到这个班的所有学生
-		Set<Student> classGrades=classGrade.getStudents();
-		for (Student student : classGrades) {//遍历set集合把学生放到list集合中
+		List<Student> students = new ArrayList<Student>();
+		// 获取指定的班级
+		ClassGrade classGrade = classGradeDao.get(clasid);
+		// 根据班级的students属性得到这个班的所有学生
+		Set<Student> classGrades = classGrade.getStudents();
+		for (Student student : classGrades) {// 遍历set集合把学生放到list集合中
 			students.add(student);
 		}
 		return students;
 	}
-
-
 }

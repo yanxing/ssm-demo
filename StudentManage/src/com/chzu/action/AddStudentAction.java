@@ -42,7 +42,7 @@ public class AddStudentAction extends AdminBaseAction {
 
 		String birthday = ServletActionContext.getRequest().getParameter(
 				"birthday");
-		if (adminService.exit(student.getNumber())) {
+		if (adminService.exit(student.getNumber().trim())) {
 			setTip("该学号的学生已经存在！");
 			return "input";
 		}

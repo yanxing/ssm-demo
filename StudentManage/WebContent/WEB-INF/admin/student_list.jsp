@@ -222,7 +222,7 @@ a:hover {
 															src="${pageContext.request.contextPath}/images/del.gif"
 															width="16" height="16" /> <a
 															href="admin/deleteAction?user.id=${id}"
-															onclick="return doDelete();">删除名片</a>
+															onclick="return doDelete();">删除学生</a>
 													</span>
 													</span>
 												</div></td>
