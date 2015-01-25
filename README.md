@@ -7,5 +7,5 @@ WEB项目仓库
 ###2.StudentManage项目
 对学生信息的增删改查，用android-async-http https://github.com/loopj/android-async-http 实现android和struts通信，此项目没有包含android端项目，只包含了一个登录示例。放在android端测试文件夹下。
 
-###2.mybatis
+###3.mybatis
 mybatis小例子，基本的增删改查（xml和注解两种实现方式）
