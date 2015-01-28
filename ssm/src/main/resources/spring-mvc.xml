@@ -1,0 +1,36 @@
+<?xml version= "1.0" encoding ="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!-- 默认的注解映射的支持 -->
+    <mvc:annotation-driven/>
+
+    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+    <context:component-scan base-package="com.chzu.controller"/>
+
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/image/**" location="./image/"/>
+    <!-- 设置权限的静态资源访问 -->
+
+    <!-- 当上面要访问的静态资源不包括在上面的配置中时，则根据此配置来访问 -->
+    <mvc:default-servlet-handler/>
+
+    <context:component-scan base-package="com.chzu.controller"/>
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+    <!-- 通过setter方法注入前缀 /WEB-INF/jsp-->
+    p:prefix="/WEB-INF/jsp/"
+    <!-- 通过setter方法注入后缀 -->
+    p:suffix=".jsp" />
+
+</beans>

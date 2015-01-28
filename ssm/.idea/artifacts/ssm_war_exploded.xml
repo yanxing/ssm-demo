@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ssm:war exploded">
+    <output-path>$PROJECT_DIR$/target/ssm</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ssm" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="C:\GitHub\web\ssm\target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="ssm/web/Web" />
+    </root>
+  </artifact>
+</component>
