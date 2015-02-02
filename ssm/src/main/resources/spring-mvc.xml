@@ -19,7 +19,9 @@
     <context:component-scan base-package="com.chzu.controller"/>
 
     <!-- 静态资源映射 -->
-    <mvc:resources mapping="/image/**" location="./image/"/>
+    <mvc:resources mapping="/resources/bootstrap/**" location="/resources/bootstrap/" />
+    <mvc:resources mapping="/resources/js/*" location="/resources/js/" />
+    <mvc:resources mapping="/resources/css/*" location="/resources/css/" />
     <!-- 设置权限的静态资源访问 -->
 
     <!-- 当上面要访问的静态资源不包括在上面的配置中时，则根据此配置来访问 -->
