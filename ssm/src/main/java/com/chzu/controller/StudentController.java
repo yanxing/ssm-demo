@@ -47,6 +47,9 @@ public class StudentController {
         return "list";
     }
 
+    /**
+     * 删除学生，重定向list
+     */
     @RequestMapping("/deleteStudent")
     public String deleteStudent(@RequestParam("id")String id){
         studentService.deleteStudent(Integer.valueOf(id));
