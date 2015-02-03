@@ -23,7 +23,7 @@
 		</div>
 		<div id="navbar" class="text-center navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#">所有学生</a></li>
+				<li><a href="list">所有学生</a></li>
 				<li><a href="#">添加学生</a></li>
 				<li><a href="#">查询学生</a></li>
 			</ul>

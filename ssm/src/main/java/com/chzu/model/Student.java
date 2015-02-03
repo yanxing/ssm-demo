@@ -1,5 +1,7 @@
 package com.chzu.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,6 +15,7 @@ public class Student implements Serializable{
     private String number;//学号
     private String name;//姓名
     private String sex;//性别
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthday;//生日
     private Grade grade;//所属的年级
 
@@ -83,8 +86,7 @@ public class Student implements Serializable{
                 ", number='" + number + '\'' +
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
-                ", birthday=" + birthday +
-                ", grade=" + grade.getName() +
+                ", birthday=" + birthday+
                 '}';
     }
 }

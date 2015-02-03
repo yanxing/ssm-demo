@@ -8,6 +8,5 @@
 <link rel="stylesheet" href="${ctx}/resources/css/index.css">
 <%@include file="header.jsp"%>
 <body>
-
 </body>
 </html>

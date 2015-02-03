@@ -15,12 +15,12 @@ import java.util.List;
  * @author yanxing on 2015/1/28.
  */
 @Named
-//@Service("studentService")
+//@Service
 public class StudentServiceImpl implements StudentService {
 
-     //@Inject
+     @Inject
      //@Autowired
-     @Resource(name = "studentDao")
+     //@Resource(name = "studentDao")
      private StudentDao studentDao;
 
     /**
@@ -29,5 +29,13 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getAllStudent() {
         return studentDao.findAll();
+    }
+
+    /**
+     * 删除学生
+     */
+    @Override
+    public void deleteStudent(Integer id) {
+        studentDao.delete(id);
     }
 }

@@ -3,6 +3,7 @@ package com.chzu.service;
 import com.chzu.model.Student;
 import com.chzu.service.impl.StudentServiceImpl;
 import org.junit.Before;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -22,6 +23,7 @@ public class ServiceTest {
     private StudentServiceImpl studentService;
 
     //测试获取所有的学生
+    @Test
     public void testGetAllStudent(){
         List<Student> students=studentService.getAllStudent();
         for(Student student:students){

@@ -1,6 +1,7 @@
 #idea
 .rebel.xml
 target/
+.idea/workspace.xml
 #################
 ## Eclipse
 #################
