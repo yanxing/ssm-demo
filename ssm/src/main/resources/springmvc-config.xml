@@ -27,7 +27,6 @@
     <!-- 当上面要访问的静态资源不包括在上面的配置中时，则根据此配置来访问 -->
     <mvc:default-servlet-handler/>
 
-    <context:component-scan base-package="com.chzu.controller"/>
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver"
             p:prefix="/WEB-INF/jsp/"
