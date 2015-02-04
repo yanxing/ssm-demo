@@ -24,8 +24,8 @@
 		<div id="navbar" class="text-center navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="list">所有学生</a></li>
-				<li><a href="#">添加学生</a></li>
-				<li><a href="#">查询学生</a></li>
+				<li><a href="add-view">添加学生</a></li>
+				<li><a href="search-view">查询学生</a></li>
 			</ul>
 		</div>
 		<!--/.navbar-collapse -->

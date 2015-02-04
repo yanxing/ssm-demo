@@ -56,4 +56,30 @@ public class StudentController {
         return "redirect:/ list ";
     }
 
+    /**
+     * 加载学生信息
+     */
+    @RequestMapping("/update-view")
+    public String updateView(@RequestParam("id") String id,ModelMap model){
+        Student student=studentService.getStudent(Integer.valueOf(id));
+        model.addAttribute("student",student);
+        return "update";
+    }
+
+    /**
+     * 加载搜索视图
+     */
+    @RequestMapping("/search-view")
+    public String searchView(){
+        return "search";
+    }
+
+    /**
+     * 加载添加学生视图
+     */
+    @RequestMapping("/add-view")
+    public String addView(){
+        return "add";
+    }
+
 }

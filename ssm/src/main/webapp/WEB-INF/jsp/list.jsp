@@ -25,7 +25,7 @@
                 <td>${student.sex}</td>
                 <td><fmt:formatDate value="${student.birthday}" pattern="yyyy-MM-dd"/></td>
                 <td><a
-                        href="${ctx}/updateStudent?id=${student.id}"><span
+                        href="${ctx}/update-view?id=${student.id}"><span
                         class="glyphicon glyphicon-pencil"></span></a>&nbsp; &nbsp;<a
                         href="javascript:if(confirm('确实要删除该条记录吗？'))location='${ctx}/deleteStudent?id=${student.id}'"
                         style="cursor: pointer"><span
