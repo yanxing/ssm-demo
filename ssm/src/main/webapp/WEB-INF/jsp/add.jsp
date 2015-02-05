@@ -5,11 +5,75 @@
 <html>
 <head>
     <title>springmvc、spring、mybatis集成例子</title>
+    <link rel="stylesheet" href="${ctx}/resources/bootstrap/css/bootstrap-datetimepicker.min.css">
+    <script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
     <link rel="stylesheet" href="${ctx}/resources/css/index.css">
+    <script type="text/javascript">
+        $().ready(function () {
+            $('.form_date').datetimepicker({
+                format: "yyyy-mm-dd",
+                language: 'zh-CN',
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2
+            }).on('changeDate', function () {
+                $(this).blur();
+            });
+        });
+
+    </script>
 </head>
 <body>
-   <div class="container-wrap">
+<div class="container-wrap">
+    <form class="form-horizontal" role="form" action="${ctx}/add">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">学号</label>
 
-   </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="number" name="number">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">姓名</label>
+
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">性别</label>
+
+            <div class="col-sm-5">
+                男&nbsp;<input type="radio" value="男" data-checkedClass="checked"
+                              name="sex" checked="checked">
+                &nbsp;&nbsp;&nbsp;女&nbsp;<input type="radio" value="女"
+                                                data-checkedClass="checked" name="sex"
+                                                id="sex">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">生日</label>
+
+            <div class="input-group date form_date col-sm-5"
+                 data-date-format="dd MM yyyy"
+                 data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="16" type="text"
+                       id="birthday" name="birthday"
+                       readonly> <span class="input-group-addon"><span
+                    class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-default" id="button"
+                       value="提交"/>
+            </div>
+
+        </div>
+    </form>
+</div>
 </body>
 </html>

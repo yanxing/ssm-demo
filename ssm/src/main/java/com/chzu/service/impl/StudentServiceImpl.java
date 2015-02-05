@@ -45,4 +45,19 @@ public class StudentServiceImpl implements StudentService {
     public Student getStudent(Integer id) {
         return studentDao.get(id);
     }
+
+    /**
+     * 更新学生
+     */
+    @Override
+    public void updateStudent(Student student) {
+        studentDao.update(student);
+    }
+
+    @Override
+    public void addStudent(Student student) {
+        studentDao.save(student);
+    }
+
+
 }

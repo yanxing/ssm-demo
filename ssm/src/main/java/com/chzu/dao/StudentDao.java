@@ -26,7 +26,7 @@ public interface StudentDao extends BaseDao<Student> {
     @Override
     public void save(Student object);
 
-    @Update("update student set number=#{number},name=#{name},sex=#{sex},birthday=#{birthday}")
+    @Update("update student set number=#{number},name=#{name},sex=#{sex},birthday=#{birthday} where id=#{id}")
     @Override
     public void update(Student object);
 

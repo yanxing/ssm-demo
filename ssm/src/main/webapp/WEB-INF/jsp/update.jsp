@@ -6,12 +6,12 @@
 <html>
 <head>
     <title>springmvc、spring、mybatis集成例子</title>
-<link rel="stylesheet" href="${ctx}/resources/bootstrap/css/bootstrap-datetimepicker.min.css">
-<script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
-<script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
-<link rel="stylesheet" href="${ctx}/resources/css/index.css">
-<script type="text/javascript">
-    $().ready(function () {
+    <link rel="stylesheet" href="${ctx}/resources/bootstrap/css/bootstrap-datetimepicker.min.css">
+    <script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="${ctx}/resources/css/index.css">
+    <script type="text/javascript">
+        $().ready(function () {
             $('.form_date').datetimepicker({
                 format: "yyyy-mm-dd",
                 language: 'zh-CN',
@@ -28,7 +28,8 @@
 </head>
 <body>
 <div class="container-wrap">
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" role="form" action="${ctx}/update">
+       <input id="id" name="id" value="${student.id}" hidden="hidden">
         <div class="form-group">
             <label class="col-sm-2 control-label">学号</label>
 
@@ -61,6 +62,13 @@
                         data-checkedClass="checked" checked="checked" name="sex"
                         id="sex">
                     </c:when>
+                    <c:otherwise>
+                        男&nbsp;<input type="radio" value="男" data-checkedClass="checked"
+                        name="sex" id="sex" checked="checked">
+                        &nbsp;&nbsp;&nbsp;女&nbsp;<input type="radio" value="女"
+                        data-checkedClass="checked"  name="sex"
+                        id="sex">
+                    </c:otherwise>
                 </c:choose>
             </div>
         </div>
@@ -81,7 +89,7 @@
 
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="submit" class="btn btn-default" id="button"
-                       onclick="return confirmtxt();" value="提交"/>
+                       value="提交"/>
             </div>
 
         </div>

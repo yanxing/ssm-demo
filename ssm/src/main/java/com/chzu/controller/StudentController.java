@@ -5,6 +5,7 @@ import com.chzu.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,9 +41,6 @@ public class StudentController {
     @RequestMapping("/list")
     public String list(ModelMap model){
         List<Student> list=studentService.getAllStudent();
-        for(Student student:list){
-            System.out.println(student);
-        }
         model.addAttribute("list",list);
         return "list";
     }
@@ -80,6 +78,26 @@ public class StudentController {
     @RequestMapping("/add-view")
     public String addView(){
         return "add";
+    }
+
+    /**
+     * 更新
+     */
+    @RequestMapping("/update")
+    public String update(@ModelAttribute Student student){
+        System.out.println(student);
+        studentService.updateStudent(student);
+        return "redirect:/list";
+    }
+
+    /**
+     * 添加
+     */
+    @RequestMapping("/add")
+    public String add(@ModelAttribute Student student){
+        System.out.println(student);
+        studentService.addStudent(student);
+        return "redirect:/list";
     }
 
 }
