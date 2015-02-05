@@ -16,6 +16,7 @@
             <td><strong>姓名</strong></td>
             <td><strong>性别</strong></td>
             <td><strong>生日</strong></td>
+            <td><strong>班级</strong></td>
             <td><strong>操作</strong></td>
         </tr>
         <c:forEach var="student" items="${list}">
@@ -24,6 +25,7 @@
                 <td>${student.name}</td>
                 <td>${student.sex}</td>
                 <td><fmt:formatDate value="${student.birthday}" pattern="yyyy-MM-dd"/></td>
+                <td>${student.grade.name}</td>
                 <td><a
                         href="${ctx}/update-view?id=${student.id}"><span
                         class="glyphicon glyphicon-pencil"></span></a>&nbsp; &nbsp;<a

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chzu.dao.StudentDao">
+    <resultMap type="com.chzu.model.Student" id="StudentResultMap">
+        <id column="student_id" property="id"/>
+        <result column="number" property="number"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <association property="grade" javaType="com.chzu.model.Grade">
+            <id column="grade_id" property="id"/>
+            <!-- 此出班级的name属性对应数据库表的字段不能和学生表中的一样，不然最后取到的学生表name字段值-->
+            <result column="grade_name" property="name"/>
+        </association>
+    </resultMap>
+
+    <!-- 根据id查询学生-->
+    <select id="get" parameterType="Integer" resultMap="StudentResultMap">
+         select s.*,g.* from student s,grade g where s.grade_id=g.grade_id and s.student_id=#{id}
+    </select>
+
+    <!-- 查询所有的学生-->
+    <select id="findAll" resultMap="StudentResultMap">
+        select s.*,g.* from student as s,grade as g where s.grade_id=g.grade_id
+    </select>
+
+    <!-- 根据学号查询学生-->
+    <select id="findByNum" parameterType="String" resultMap="StudentResultMap">
+        select s.*,g.* from student s,grade g where s.grade_id=g.grade_id and s.number=#{number}
+    </select>
+</mapper>
