@@ -32,4 +32,7 @@ public interface StudentDao extends BaseDao<Student> {
 
     @Select("select * from student")
     public List<Student> findAll();
+
+    @Select("select * from student where number=#{number}")
+    public Student findByNum(String number);//按学号查询
 }

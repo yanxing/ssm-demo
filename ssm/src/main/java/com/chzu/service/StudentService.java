@@ -18,4 +18,6 @@ public interface StudentService {
    public void updateStudent(Student student);
 
    public void addStudent(Student student);
+
+   public Student getStudent(String number);
 }

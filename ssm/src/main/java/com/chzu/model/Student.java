@@ -1,5 +1,6 @@
 package com.chzu.model;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.util.Date;
 public class Student implements Serializable{
 
     private Integer id;
+    @NotBlank(message = ("不能为空"))
     private String number;//学号
     private String name;//姓名
     private String sex;//性别

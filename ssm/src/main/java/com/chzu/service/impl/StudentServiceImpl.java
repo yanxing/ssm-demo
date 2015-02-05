@@ -54,9 +54,20 @@ public class StudentServiceImpl implements StudentService {
         studentDao.update(student);
     }
 
+    /**
+     * 添加学生
+     */
     @Override
     public void addStudent(Student student) {
         studentDao.save(student);
+    }
+
+    /**
+     * 按学号查询
+     */
+    @Override
+    public Student getStudent(String number) {
+        return studentDao.findByNum(number);
     }
 
 

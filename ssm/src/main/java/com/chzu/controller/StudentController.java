@@ -5,13 +5,16 @@ import com.chzu.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -99,5 +102,23 @@ public class StudentController {
         studentService.addStudent(student);
         return "redirect:/list";
     }
+
+    /**
+     * 搜索学生
+     */
+    @RequestMapping("/search")
+    public ModelAndView search(@Valid Student  student, Errors errors,ModelMap model,@RequestParam("number") String numberP){
+        if(errors.hasErrors()) {
+            System.out.println(errors.getFieldError("number"));
+            //errors.rejectValue("username","不能为空！");
+            return new ModelAndView("search","errors",errors);
+        }else {
+            Student student1=studentService.getStudent(numberP);
+            System.out.println(student1);
+            model.addAttribute("student",student1);
+            return new ModelAndView("search");
+        }
+    }
+
 
 }
