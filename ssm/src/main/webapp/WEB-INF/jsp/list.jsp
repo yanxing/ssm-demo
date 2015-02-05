@@ -2,12 +2,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<%@include file="header.jsp" %>
 <html>
 <head>
     <title>springmvc、spring、mybatis集成例子</title>
+    <link rel="stylesheet" href="${ctx}/resources/css/index.css">
 </head>
-<link rel="stylesheet" href="${ctx}/resources/css/index.css">
-<%@include file="header.jsp" %>
 <tbody>
 <div class="container-wrap">
     <table class="table table-hover">

@@ -2,29 +2,30 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-<link rel="stylesheet" href="${ctx}/resources/bootstrap/css/bootstrap-datetimepicker.min.css">
-<script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
-<script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<%@include file="header.jsp" %>
 <html>
 <head>
     <title>springmvc、spring、mybatis集成例子</title>
-</head>
+<link rel="stylesheet" href="${ctx}/resources/bootstrap/css/bootstrap-datetimepicker.min.css">
+<script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="${ctx}/resources/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <link rel="stylesheet" href="${ctx}/resources/css/index.css">
-<%@include file="header.jsp" %>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('.form_date').datetimepicker({
-            format: "yyyy-mm-dd",
-            language: 'zh-CN',
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView : 2,
-        }).on('changeDate', function () {
-            $(this).blur();
+    $().ready(function () {
+            $('.form_date').datetimepicker({
+                format: "yyyy-mm-dd",
+                language: 'zh-CN',
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2
+            }).on('changeDate', function () {
+                $(this).blur();
+            });
         });
-    });
-</script>
+
+    </script>
+</head>
 <body>
 <div class="container-wrap">
     <form class="form-horizontal" role="form">
